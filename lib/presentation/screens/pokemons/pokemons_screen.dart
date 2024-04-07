@@ -13,19 +13,48 @@ class PokemonsScreen extends StatelessWidget {
   }
 }
 
-class PokemonsView extends StatefulWidget {
+class PokemonsView extends ConsumerStatefulWidget {
   const PokemonsView({super.key});
 
   @override
-  State<PokemonsView> createState() => _PokemonsViewState();
+  PokemonsViewState createState() => PokemonsViewState();
 }
 
-class _PokemonsViewState extends State<PokemonsView> {
+class PokemonsViewState extends ConsumerState<PokemonsView> {
   final scrollController = ScrollController();
+
+  void infiniteScroll() {
+    final currentPokemon = ref.read(pokemonIdsProvider);
+
+    if (currentPokemon.length > 400) {
+      scrollController.removeListener(infiniteScroll);
+    }
+
+    if ((scrollController.position.pixels + 200) >
+        scrollController.position.maxScrollExtent) {
+      ref.read(pokemonIdsProvider.notifier).update((state) => [
+            ...state,
+            ...List.generate(30, (index) => state.length + index + 1)
+          ]);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController.addListener(infiniteScroll);
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
+      controller: scrollController,
       slivers: [
         SliverAppBar(
           title: const Text('Pokemons'),
