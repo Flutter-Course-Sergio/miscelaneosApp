@@ -1,5 +1,5 @@
 import 'package:miscelaneos/domain/domain.dart';
 
-abstract class PokemonRepository {
+abstract class PokemonsRepository {
   Future<(Pokemon?, String)> getPokemon(String id);
 }
