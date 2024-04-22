@@ -1,4 +1,4 @@
-package com.example.miscelaneos
+package com.sergiobarreras.miscelaneos
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 
