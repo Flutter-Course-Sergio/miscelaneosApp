@@ -19,6 +19,10 @@
         android:label="miscelaneos"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data android:name="com.google.android.ge.API_KEY"
+            android:value="AIzaSyCxZMRHqhFj5r09JtuVnyJ6Bet-FWjWXPA" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -48,7 +52,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="http" />
                 <data android:scheme="https" />
-                <data android:host="flutter-deep-linking-webapp-sbg.netlify.app"/>
+                <data android:host="flutter-deep-linking-webapp-sbg.netlify.app" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
