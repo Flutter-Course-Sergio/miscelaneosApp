@@ -100,6 +100,11 @@ class __MapViewState extends ConsumerState<_MapView> {
     final mapController = ref.watch(mapControllerProvider);
 
     return GoogleMap(
+      onLongPress: (arg) {
+        ref
+            .read(mapControllerProvider.notifier)
+            .addMarker(arg.latitude, arg.longitude);
+      },
       markers: mapController.markersSet,
       mapType: MapType.normal,
       initialCameraPosition: CameraPosition(
