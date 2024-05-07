@@ -33,6 +33,7 @@ final menuItems = <MenuItem>[
       title: 'Controlado',
       icon: Icons.control_camera_rounded,
       route: '/controlled-map'),
+  MenuItem(title: 'Badge', icon: Icons.notifications, route: '/badge'),
 ];
 
 class MainMenu extends StatelessWidget {

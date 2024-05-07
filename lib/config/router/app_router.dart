@@ -40,4 +40,5 @@ final router = GoRouter(routes: [
   GoRoute(
       path: '/controlled-map',
       builder: (context, state) => const ControlledMapScreen()),
+  GoRoute(path: '/badge', builder: (context, state) => const BadgeScreen()),
 ]);
