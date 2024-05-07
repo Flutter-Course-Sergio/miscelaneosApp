@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:miscelaneos/presentation/providers/location/watch_location_provider.dart';
 import 'package:miscelaneos/presentation/providers/providers.dart';
 
 class ControlledMapScreen extends ConsumerWidget {
@@ -37,6 +36,8 @@ class MapAndControls extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final mapControllerState = ref.watch(mapControllerProvider);
+
     return Stack(
       children: [
         _MapView(initialLat: latitude, initialLng: longitude),
@@ -52,9 +53,7 @@ class MapAndControls extends ConsumerWidget {
           left: 20,
           child: IconButton.filledTonal(
               onPressed: () {
-                ref
-                    .read(mapControllerProvider.notifier)
-                    .goToLocation(latitude, longitude);
+                ref.read(mapControllerProvider.notifier).findUser();
               },
               icon: const Icon(Icons.location_searching)),
         ),
@@ -62,7 +61,12 @@ class MapAndControls extends ConsumerWidget {
           bottom: 90,
           left: 20,
           child: IconButton.filledTonal(
-              onPressed: () {}, icon: const Icon(Icons.directions_run_rounded)),
+              onPressed: () {
+                ref.read(mapControllerProvider.notifier).toggleFollowUser();
+              },
+              icon: Icon(mapControllerState.followUser
+                  ? Icons.directions_run_rounded
+                  : Icons.accessibility_new_rounded)),
         ),
         Positioned(
           bottom: 140,
