@@ -16,6 +16,10 @@ class MapState {
       this.markers = const [],
       this.controller});
 
+  Set<Marker> get markersSet {
+    return Set.from(markers);
+  }
+
   MapState copyWith({
     bool? isReady,
     bool? followUser,
@@ -76,6 +80,20 @@ class MapNotifier extends StateNotifier<MapState> {
     if (lastKnowLocation == null) return;
     final (latitude, longitude) = lastKnowLocation!;
     goToLocation(latitude, longitude);
+  }
+
+  void addMarkerCurrentPosition() {
+    if (lastKnowLocation == null) return;
+    final (latitude, longitude) = lastKnowLocation!;
+    addMarker(latitude, longitude);
+  }
+
+  void addMarker(double lat, double lon) {
+    final newMarker = Marker(
+        markerId: MarkerId('${state.markers.length}'),
+        position: LatLng(lat, lon));
+
+    state = state.copyWith(markers: [...state.markers, newMarker]);
   }
 }
 
