@@ -88,7 +88,9 @@ class __MapViewState extends State<_MapView> {
           target: LatLng(widget.initialLat, widget.initialLng), zoom: 12),
       myLocationEnabled: true,
       myLocationButtonEnabled: false,
-      onMapCreated: (GoogleMapController controller) {},
+      onMapCreated: (GoogleMapController controller) {
+
+      },
     );
   }
 }
