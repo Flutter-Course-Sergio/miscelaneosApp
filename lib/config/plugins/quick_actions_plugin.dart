@@ -24,10 +24,14 @@ class QuickActionsPlugin {
     });
 
     quickActions.setShortcutItems(<ShortcutItem>[
-      const ShortcutItem(type: 'biometric', localizedTitle: 'Biometric'),
-      const ShortcutItem(type: 'compass', localizedTitle: 'Compass'),
-      const ShortcutItem(type: 'pokemons', localizedTitle: 'Pokemons'),
-      const ShortcutItem(type: 'charmander', localizedTitle: 'Charmander'),
+      const ShortcutItem(
+          type: 'biometric', localizedTitle: 'Biometric', icon: 'finger'),
+      const ShortcutItem(
+          type: 'compass', localizedTitle: 'Compass', icon: 'compass'),
+      const ShortcutItem(
+          type: 'pokemons', localizedTitle: 'Pokemons', icon: 'pokemons'),
+      const ShortcutItem(
+          type: 'charmander', localizedTitle: 'Charmander', icon: 'charmander'),
     ]);
   }
 }
