@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:miscelaneos/presentation/providers/location/watch_location_provider.dart';
+import 'package:miscelaneos/presentation/providers/providers.dart';
 
 class ControlledMapScreen extends ConsumerWidget {
   const ControlledMapScreen({super.key});
@@ -27,7 +28,7 @@ class ControlledMapScreen extends ConsumerWidget {
   }
 }
 
-class MapAndControls extends StatelessWidget {
+class MapAndControls extends ConsumerWidget {
   final double latitude;
   final double longitude;
 
@@ -35,7 +36,7 @@ class MapAndControls extends StatelessWidget {
       {super.key, required this.latitude, required this.longitude});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Stack(
       children: [
         _MapView(initialLat: latitude, initialLng: longitude),
@@ -50,7 +51,12 @@ class MapAndControls extends StatelessWidget {
           bottom: 40,
           left: 20,
           child: IconButton.filledTonal(
-              onPressed: () {}, icon: const Icon(Icons.location_searching)),
+              onPressed: () {
+                ref
+                    .read(mapControllerProvider.notifier)
+                    .goToLocation(latitude, longitude);
+              },
+              icon: const Icon(Icons.location_searching)),
         ),
         Positioned(
           bottom: 90,
@@ -69,27 +75,27 @@ class MapAndControls extends StatelessWidget {
   }
 }
 
-class _MapView extends StatefulWidget {
+class _MapView extends ConsumerStatefulWidget {
   final double initialLat;
   final double initialLng;
 
   const _MapView({required this.initialLat, required this.initialLng});
 
   @override
-  State<_MapView> createState() => __MapViewState();
+  __MapViewState createState() => __MapViewState();
 }
 
-class __MapViewState extends State<_MapView> {
+class __MapViewState extends ConsumerState<_MapView> {
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
       mapType: MapType.normal,
       initialCameraPosition: CameraPosition(
-          target: LatLng(widget.initialLat, widget.initialLng), zoom: 12),
+          target: LatLng(widget.initialLat, widget.initialLng), zoom: 15),
       myLocationEnabled: true,
       myLocationButtonEnabled: false,
       onMapCreated: (GoogleMapController controller) {
-
+        ref.read(mapControllerProvider.notifier).setMapController(controller);
       },
     );
   }
