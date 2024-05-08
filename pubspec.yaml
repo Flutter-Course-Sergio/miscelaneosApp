@@ -23,6 +23,7 @@ dependencies:
   quick_actions: ^1.0.7
   sensors_plus: ^4.0.2
   share_plus: ^8.0.2
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   change_app_package_name: ^1.1.0
