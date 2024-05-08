@@ -10,7 +10,7 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final adBannerAsync = ref.watch(addBannerProvider);
+    final adBannerAsync = ref.watch(adBannerProvider);
 
     return Scaffold(
       body: Column(
