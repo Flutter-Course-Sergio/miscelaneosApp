@@ -34,6 +34,9 @@ final menuItems = <MenuItem>[
       icon: Icons.control_camera_rounded,
       route: '/controlled-map'),
   MenuItem(title: 'Badge', icon: Icons.notifications, route: '/badge'),
+  MenuItem(
+      title: 'Ad Full', icon: Icons.ad_units_rounded, route: '/ad-fullscreen'),
+  MenuItem(title: 'Ad Reward', icon: Icons.fort_rounded, route: '/ad-rewarded'),
 ];
 
 class MainMenu extends StatelessWidget {
@@ -87,6 +90,7 @@ class HomeMenuItem extends StatelessWidget {
             const SizedBox(height: 10),
             Text(title,
                 textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(color: Colors.white)),
           ],
         ),
