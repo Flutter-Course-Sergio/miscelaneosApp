@@ -23,6 +23,10 @@
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCxZMRHqhFj5r09JtuVnyJ6Bet-FWjWXPA" />
 
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8356817453808107~5870123710" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
