@@ -11,6 +11,7 @@ export 'local_auth/local_auth_providers.dart';
 
 export 'pokemons/pokemon_list_provider.dart';
 export 'pokemons/pokemon_provider.dart';
+export 'pokemons/pokemon_db_provider.dart';
 
 export 'location/user_location_provider.dart';
 export 'location/watch_location_provider.dart';

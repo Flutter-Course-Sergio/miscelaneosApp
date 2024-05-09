@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:workmanager/workmanager.dart';
 
 import '../../../config/config.dart';
 import '../../../domain/domain.dart';
+import '../../providers/providers.dart';
 
-class DbPokemonScreen extends StatelessWidget {
+class DbPokemonScreen extends ConsumerWidget {
   const DbPokemonScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final pokemonsAsync = ref.watch(pokemonDbProvider);
+
+    if (pokemonsAsync.isLoading) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    final List<Pokemon> pokemons = pokemonsAsync.value ?? [];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Background Process'),
@@ -23,7 +35,7 @@ class DbPokemonScreen extends StatelessWidget {
               icon: const Icon(Icons.add_alarm_rounded))
         ],
       ),
-      body: CustomScrollView(slivers: [_PokemonGrid(pokemons: [])]),
+      body: CustomScrollView(slivers: [_PokemonGrid(pokemons: pokemons)]),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
         label: const Text('Activar fetch periodico'),
