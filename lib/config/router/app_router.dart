@@ -47,4 +47,8 @@ final router = GoRouter(routes: [
   GoRoute(
       path: '/ad-rewarded',
       builder: (context, state) => const AdRewardedScreen()),
+  GoRoute(
+    path: '/workmanager',
+    builder: (context, state) => const DbPokemonScreen(),
+  )
 ]);

@@ -37,6 +37,8 @@ final menuItems = <MenuItem>[
   MenuItem(
       title: 'Ad Full', icon: Icons.ad_units_rounded, route: '/ad-fullscreen'),
   MenuItem(title: 'Ad Reward', icon: Icons.fort_rounded, route: '/ad-rewarded'),
+  MenuItem(
+      title: 'Workmanager', icon: Icons.work_rounded, route: '/workmanager')
 ];
 
 class MainMenu extends StatelessWidget {

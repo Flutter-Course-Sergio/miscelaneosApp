@@ -12,15 +12,15 @@ void main() async {
 
   Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
 
-  Workmanager().registerOneOffTask("com.sergiobarreras.miscelaneos.simpleTask",
-      "com.sergiobarreras.miscelaneos.simpleTask",
-      inputData: {'hola': 'mundo'},
-      constraints: Constraints(
-          networkType: NetworkType.connected,
-          requiresBatteryNotLow: true,
-          requiresCharging: true,
-          requiresDeviceIdle: true,
-          requiresStorageNotLow: true));
+  // Workmanager().registerOneOffTask("com.sergiobarreras.miscelaneos.simpleTask",
+  //     "com.sergiobarreras.miscelaneos.simpleTask",
+  //     inputData: {'hola': 'mundo'},
+  //     constraints: Constraints(
+  //         networkType: NetworkType.connected,
+  //         requiresBatteryNotLow: true,
+  //         requiresCharging: true,
+  //         requiresDeviceIdle: true,
+  //         requiresStorageNotLow: true));
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const ProviderScope(child: MainApp()));

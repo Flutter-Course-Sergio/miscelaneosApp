@@ -16,6 +16,7 @@ export 'biometrics/biometric_screen.dart';
 // Pokemons
 export 'pokemons/pokemons_screen.dart';
 export 'pokemons/pokemon_screen.dart';
+export 'pokemons/db_pokemons_screen.dart';
 
 // Ubicación y mapas
 export 'location/controlled_map_screen.dart';
