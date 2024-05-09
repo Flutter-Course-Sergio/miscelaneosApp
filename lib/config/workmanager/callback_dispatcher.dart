@@ -14,7 +14,7 @@ void callbackDispatcher() {
         await loadNextPokemon();
         break;
       case fetchPeriodicBackgroundTaskKey:
-        print('fetchPeriodicBackgroundTaskKey');
+        await loadNextPokemon();
         break;
     }
     return true;
