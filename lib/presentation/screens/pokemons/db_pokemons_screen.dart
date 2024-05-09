@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:workmanager/workmanager.dart';
 
+import '../../../config/config.dart';
 import '../../../domain/domain.dart';
 
 class DbPokemonScreen extends StatelessWidget {
@@ -12,7 +14,13 @@ class DbPokemonScreen extends StatelessWidget {
         title: const Text('Background Process'),
         actions: [
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.add_alarm_rounded))
+              onPressed: () {
+                Workmanager().registerOneOffTask(
+                    fetchBackgroundTaskKey, fetchBackgroundTaskKey,
+                    initialDelay: const Duration(seconds: 3),
+                    inputData: {'howMany': 30});
+              },
+              icon: const Icon(Icons.add_alarm_rounded))
         ],
       ),
       body: CustomScrollView(slivers: [_PokemonGrid(pokemons: [])]),
